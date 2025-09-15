@@ -1,6 +1,9 @@
 
 #include "PHA.hpp"
 
-int main() {
-	cout << "viskas viekia:)";
+int main()
+{
+	string input;
+	cin >> input;
+	cout << PHA256(input);
 }
