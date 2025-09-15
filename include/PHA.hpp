@@ -1,7 +1,6 @@
+#pragma once
+
 #include <iostream>
 using namespace std;
 
-int main()
-{
-    cout << ":)";
-}
+string PHA256(string input);
