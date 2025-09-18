@@ -6,6 +6,28 @@ string PHA256(const string &inputstring)
     double x = 0, y = 0;
 
     // Walk: angle = byte (radians), step by 1
+    for (unsigned char a : inputstring) {
+        x += cos(a);
+        y += sin(a);
+    }
+
+    const double SCALE = 1e15;
+    const auto xi = static_cast<int64_t>(x * SCALE); // truncates toward zero
+    const auto yi = static_cast<int64_t>(y * SCALE);
+
+    ostringstream out;
+    out << hex << nouppercase << setfill('0')
+        << setw(16) << static_cast<unsigned long long>(xi)
+        << setw(16) << static_cast<unsigned long long>(yi);
+
+    return out.str(); // 32 hex chars: first 16 = x, last 16 = y
+}
+
+/*
+    // Start at coordinates (0,0)
+    double x = 0, y = 0;
+
+    // Walk: angle = byte (radians), step by 1
     for (unsigned char b : inputstring)
     {
         double a = static_cast<double>(b);
@@ -28,4 +50,4 @@ string PHA256(const string &inputstring)
         << setw(16) << static_cast<unsigned long long>(uy);
 
     return out.str(); // 32 hex chars: first 16 = x, last 16 = y
-}
+*/
