@@ -1,8 +1,9 @@
 # VSCode
-*/.vscode
-.vscode
+**/.vscode
 
 # Build Files
-*/*.exe
-*.exe
+**/*.exe
+
+# Text files
+**/*.txt
 
