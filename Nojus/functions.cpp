@@ -101,5 +101,4 @@ void Skaityti()
 
         std::cout << "Hash: " << hash.str() << std::endl;
     }
-    std::cout << "Total words found: " << stringArray.size() << std::endl;
 }
