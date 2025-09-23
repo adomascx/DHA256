@@ -11,7 +11,7 @@ BIN_DIR = bin
 TARGET = $(BIN_DIR)/hash
 
 # Source files
-SOURCES = main.cpp
+SOURCES = main.cpp functions.cpp
 
 # Header files
 HEADERS = header.h
@@ -36,7 +36,7 @@ $(BIN_DIR)/%.o: %.cpp $(HEADERS)
 
 # Clean rule
 clean:
-	rm -rf $(BIN_DIR)
+	if exist $(BIN_DIR) rmdir /s /q $(BIN_DIR)
 
 # Phony targets
 .PHONY: all clean
