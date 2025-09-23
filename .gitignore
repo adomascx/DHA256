@@ -3,8 +3,10 @@
 
 # Build Files
 **/*.exe
+**/bin
 
 # Text files
 **/*.txt
 
-**/bin
+# Project Requirements reference 
+REQUIREMENTS.md

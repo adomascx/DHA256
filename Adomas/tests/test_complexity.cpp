@@ -2,5 +2,6 @@
 
 int main()
 {
-	
+	ifstream inputStream("konstitucija.txt");
+    
 }

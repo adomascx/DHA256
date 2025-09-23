@@ -10,8 +10,8 @@ int main(int argc, const char *argv[])
 	}
 	else
 	{
-		ifstream inputFile(string(argv[1]) + ".txt");
-		getline(inputFile, inputString);
+		ifstream inputStream(string(argv[1]) + ".txt");
+		getline(inputStream, inputString);
 		cout << "Hash: " << PHA256(inputString);
 	}
 }

@@ -10,7 +10,7 @@ int main()
 
     string outputFile;
     cin >> outputFile;
-    ofstream outstream(outputFile + ".txt");
+    ofstream outStream(outputFile + ".txt");
 
     cout << endl
          << "Type of file:" << endl
@@ -26,7 +26,7 @@ int main()
     {
     case '1':
     {
-        outstream << char('a' + rand() % 26);
+        outStream << char('a' + rand() % 26);
         break;
     }
 
@@ -39,22 +39,22 @@ int main()
             s += 'a' + rand() % 26;
         }
 
-        outstream << s;
+        outStream << s;
         break;
     }
 
     case '3':
     {
         string s;
-        ofstream outstream2(outputFile + "_2.txt");
+        ofstream outStream2(outputFile + "_2.txt");
 
         for (int i = 0; i < 2000; i++)
         {
             s += 'a' + rand() % 26;
         }
 
-        outstream << s << char('a' + rand() % 26);
-        outstream2 << s << char('a' + rand() % 26);
+        outStream << s << char('a' + rand() % 26);
+        outStream2 << s << char('a' + rand() % 26);
         break;
     }
 
