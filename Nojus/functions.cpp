@@ -62,6 +62,9 @@ void Skaityti()
         }
     }
     file.close();
+    std::cout << std::endl << "Total words found: " << stringArray.size() << std::endl;
+    
+    std::vector<std::string> hashVector;
     int seed = 2671109;
     for (const std::string &str : stringArray)
     {
@@ -99,6 +102,28 @@ void Skaityti()
              << std::setw(8) << std::setfill('0') << part3
              << std::setw(8) << std::setfill('0') << part4;
 
-        std::cout << "Hash: " << hash.str() << std::endl;
+        std::string hashStr = hash.str();
+        hashVector.push_back(hashStr);
+        std::ofstream fr("hash.txt", std::ios::app);
+        fr << "Word: '" << str << "' -> Hash: " << hashStr << std::endl;
+        fr.close();
+    }
+    
+    std::cout << "Checking for hash collisions..." << std::endl;
+    bool foundCollision = false;
+    for (size_t i = 0; i < hashVector.size(); i++)
+    {
+        for (size_t j = i + 1; j < hashVector.size(); j++)
+        {
+            if (hashVector[i] == hashVector[j] && stringArray[i] != stringArray[j])
+            {
+                std::cout << "COLLISION FOUND! Hash " << hashVector[i] << " appears for words '" << stringArray[i] << "' and '" << stringArray[j] << "'" << std::endl;
+                foundCollision = true;
+            }
+        }
+    }
+    if (!foundCollision)
+    {
+        std::cout << "No hash collisions found among " << hashVector.size() << " hashes." << std::endl;
     }
 }

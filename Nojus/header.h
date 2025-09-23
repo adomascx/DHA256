@@ -5,6 +5,7 @@
 #include <fstream>
 #include <vector>
 #include <conio.h>
+#include <cstdlib>
 
 void Ivesti();
 void Skaityti();
