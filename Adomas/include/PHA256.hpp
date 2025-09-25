@@ -13,16 +13,6 @@ string float_to_hex16(double inputValue);
 
 string PHA256(const string &inputstring);
 
-// ====================== Improved experimental variants ======================
-// NOTE: These functions are STILL **NOT** cryptographically secure. They are
-// heuristic / educational and keep the original "trig walk -> fold float"
-// idea while adding:
-//  - Better domain safety (zero / denorm handling)
-//  - Additional non‑linear mixing and avalanche style bit diffusion
-//  - Slightly richer per‑character dynamics (angle perturbation & chaotic term)
-// Output size / external behaviour kept analogous (256-bit style hex string).
-// ============================================================================
-
 // Improved 128-bit (32 hex chars) fold of a floating point magnitude.
 // Retains the concept of extracting decimal digits but adds robust handling
 // and a SplitMix-inspired avalanche to diffuse bits better.

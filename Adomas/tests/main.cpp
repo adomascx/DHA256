@@ -1,4 +1,4 @@
-#include "PHA.hpp"
+#include "PHA256.hpp"
 
 int main(int argc, const char *argv[])
 {

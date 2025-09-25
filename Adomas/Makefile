@@ -1,19 +1,22 @@
 # Compilation variables
 CXX = g++
-CXXFLAGS = -Wall -Wextra -fdiagnostics-color=always -g -std=c++20 -Iinclude -mconsole -static-libgcc -static-libstdc++
+CXXFLAGS = -Wall -Wextra -fdiagnostics-color=always -g -std=c++20 -Iinclude -mconsole
 
-SRC = src/PHA.cpp
+SRC = src/PHA256.cpp
+TEST_SRC = src/tests.cpp
 
-test: test_input 
+test: test_man test_auto
 
-test_input: $(SRC) tests/test_input.cpp
+
+main: $(SRC) tests/main.cpp
+	$(CXX) $(CXXFLAGS) -o build/PHA256.exe $^
+
+test_man: $(SRC) $(TEST_SRC) tests/test_man.cpp
 	$(CXX) $(CXXFLAGS) -o build/$@.exe $^
 
-test_complexity: $(SRC) tests/test_complexity.cpp
+test_auto: $(SRC) $(TEST_SRC) tests/test_auto.cpp
 	$(CXX) $(CXXFLAGS) -o build/$@.exe $^
 
-util: $(SRC) tests/file_creation_util.cpp
-	$(CXX) $(CXXFLAGS) -o build/$@.exe $^
 
 clean:
 	rm build/*.exe

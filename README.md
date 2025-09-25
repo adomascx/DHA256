@@ -17,11 +17,9 @@
 Šis projektas realizuoja originalias hash funkcijas VU Blockchain kurso 1 laboratoriniui darbui.
 Tikslas - sukurti originalų hash generatorių, kuris atitiktų kriptografinių hash funkcijų standartus ir nekopijuotų esamų algoritmų kaip SHA-256 ar MD5.
 
-## Algoritmo Aprašymas
+## Algoritmo pseudokodai
 
 ### PHA256 (Adomo algoritmas)
-
-#### Rankinis Realizavimas (PHA256 v0.1)
 
 ```pseudocode
 FUNCTION PHA256(input):
@@ -47,16 +45,7 @@ FUNCTION float_to_hex32(value):
     RETURN format_hex(acc1, 16) + format_hex(acc2, 16)
 ```
 
-#### AI-Pagerintas Realizavimas (PHA256_AI v0.2)
-
-```pseudocode
-// TODO: Pridėti pseudo-kodą AI-pagerintai versijai
-// Palyginti su v0.1 ir paryškinti pagerinimus
-```
-
-### Nojaus Hash (Nojaus algoritmas)
-
-#### Rankinis Realizavimas (v0.1)
+### Nojaus Hash
 
 ```pseudocode
 FUNCTION NojausHash(input):
@@ -84,7 +73,7 @@ cd Nojus/
 make
 ```
 
-### Naudojimas
+### Naudojimas **[TBD]**
 
 #### PHA256 ir PHA256_AI (Adomas)
 
@@ -142,9 +131,9 @@ make
 
 | Algoritmas  | Deterministinis? |
 | ----------- | ---------------- |
-| PHA256      | Taip/Ne          |
-| PHA256_AI   | Taip/Ne          |
-| Nojaus Hash | Taip/Ne          |
+| PHA256      | Taip             |
+| PHA256_AI   | Taip             |
+| Nojaus Hash | *Taip/Ne*        |
 
 ### 3. Veikimo Efektyvumo Analizė
 
@@ -170,7 +159,7 @@ make
 | 8                |             |                            |
 | 16               |             |                            |
 
-#### Nojaus Hash Greitis
+#### *Nojaus Hash Greitis*
 
 | Apdorotų Eilučių | Laikas (ms) | Hash Greitis (eilutės/sek) |
 | ---------------- | ----------- | -------------------------- |
@@ -265,20 +254,20 @@ make
 
 ### Visų Trijų Algoritmų Palyginimas
 
-| Algoritmas         | Greitis | Kolizijų Dažnis | Lavinos % |
-| ------------------ | ------- | --------------- | --------- |
-| PHA256 (Rankinis)  |         |                 |           |
-| PHA256_AI          |         |                 |           |
-| Nojaus Hash        |         |                 |           |
+| Algoritmas        | Greitis | Kolizijų Dažnis | Lavinos % |
+| ----------------- | ------- | --------------- | --------- |
+| PHA256 (Rankinis) |         |                 |           |
+| PHA256_AI         |         |                 |           |
+| Nojaus Hash       |         |                 |           |
 
 ### Palyginimas su Kitos Komandos Algoritmu
 
-| Algoritmas                | Greitis | Kolizijų Dažnis | Lavinos % |
-| ------------------------- | ------- | --------------- | --------- |
-| PHA256 (Rankinis)         |         |                 |           |
-| PHA256_AI                 |         |                 |           |
-| Nojaus Hash               |         |                 |           |
-| Valentinas/Andrius Algo   |         |                 |           |
+| Algoritmas              | Greitis | Kolizijų Dažnis | Lavinos % |
+| ----------------------- | ------- | --------------- | --------- |
+| PHA256 (Rankinis)       |         |                 |           |
+| PHA256_AI               |         |                 |           |
+| Nojaus Hash             |         |                 |           |
+| Valentinas/Andrius Algo |         |                 |           |
 
 ### Palyginimas su Standartiniais Algoritmais
 
@@ -287,6 +276,4 @@ make
 | PHA256      |                       |                       |                 |
 | PHA256_AI   |                       |                       |                 |
 | Nojaus Hash |                       |                       |                 |
-| MD5         |                       |                       |                 |
-| SHA-1       |                       |                       |                 |
 | SHA-256     |                       |                       |                 |
