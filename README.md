@@ -77,8 +77,6 @@ FUNCTION float_to_hex32(value):
 
 ### Nojaus Hash
 
-Nojau užpildyk pls 🙏
-
 ```pseudocode
 FUNCTION HASH(string):
     // Predetermined seed
@@ -169,7 +167,14 @@ make all
 
 #### Nojaus Hash (`Nojus/`)
 
-Nojau užpildyk pls 🙏
+- Paleidimas
+
+  ```cmd
+  cd Nojus
+  bin\hash.exe
+  ```
+
+  Pasirinkus option `1` nuskaitomas failas. Vartotojas iveda failo pavadinima (turi buti .txt formato). Option `2` leidzia ivesti ranka.
 
 ## Eksperimentinis Tyrimas
 
