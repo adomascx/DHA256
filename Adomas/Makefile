@@ -5,6 +5,8 @@ CXXFLAGS = -Wall -Wextra -fdiagnostics-color=always -g -std=c++20 -Iinclude -mco
 SRC = src/PHA256.cpp
 TEST_SRC = src/tests.cpp
 
+all : test main
+
 test: test_man test_auto
 
 

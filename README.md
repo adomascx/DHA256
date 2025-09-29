@@ -116,7 +116,7 @@ make
   build\test_auto.exe
   ```
 
-  Pasirinkus režimą `t` (tests) galima patikrinti hash ilgius ir deterministiškumą, režimas `b` paleidžia visų trijų metrikų benchmark'us. Galima rinktis konkretų algoritmą (PHA256, PHA256_AI, NojusHash, SHA256) arba `All`.
+  Pasirinkus `t` (tests) galima patikrinti hash ilgius ir deterministiškumą, `b` paleidžia visų trijų metrikų benchmark'us. Galima rinktis konkretų algoritmą (PHA256, PHA256_AI, NojusHash, SHA256) arba `All`.
 
 - Rankiniams eksperimentams:
 
@@ -153,11 +153,11 @@ Nojau užpildyk pls 🙏
 
 **Rezultatai:**
 
-| Įvedimo tipas   | PHA256 | PHA256_AI | Nojaus Hash | SHA-256 |
-| --------------- | ------ | --------- | ----------- | ------- |
-| Vienas simbolis | 64 hex | 64 hex    | 32 hex      | 64 hex  |
-| Didelis failas  | 64 hex | 64 hex    | 32 hex      | 64 hex  |
-| Tuščias failas  | 64 hex | 64 hex    | 32 hex      | 64 hex  |
+| Įvedimo tipas   | PHA256 | PHA256_AI | Nojaus Hash |
+| --------------- | ------ | --------- | ----------- |
+| Vienas simbolis | 64 hex | 64 hex    | 64 hex      |
+| Didelis failas  | 64 hex | 64 hex    | 64 hex      |
+| Tuščias failas  | 64 hex | 64 hex    | 64 hex      |
 
 ### 2. Deterministiškumo Testavimas
 
@@ -170,7 +170,6 @@ Nojau užpildyk pls 🙏
 | PHA256      | Taip             |
 | PHA256_AI   | Taip             |
 | Nojaus Hash | Taip             |
-| SHA-256     | Taip             |
 
 ### 3. Veikimo Efektyvumo Analizė
 
