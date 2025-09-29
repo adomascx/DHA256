@@ -80,11 +80,42 @@ FUNCTION float_to_hex32(value):
 Nojau užpildyk pls 🙏
 
 ```pseudocode
-FUNCTION NojausHash(input):
-    // TODO: Pridėti Nojaus hash algoritmo pseudo-kodą
-    
-    // Grąžina 64 simbolių hex eilutę
-    RETURN hash_output
+FUNCTION HASH(string):
+    // Predetermined seed
+    seed = 2671109
+
+    // Seed keitimas priklausant nuo input
+    FOR each char IN string:
+        seed = seed + ASCII(char)
+
+    SRAND(seed)
+    // Value yra uint32 (32 bitu), kad pakeitus i hex formata, butu 8 ilgio
+    value = RANDOM()
+
+    // Random bit shifting priklausantis nuo seed
+    FOR each char IN string:
+        c = ASCII(char)
+        shift = RANDOM() % 8
+
+        IF RANDOM() % 2 == 0:
+            rotated = ROTLEFT(c, shift, 8)
+        ELSE:
+            rotated = ROTRIGHT(c, shift, 8)
+
+        // Predetermined bitu keitimas
+        value = value XOR rotated
+        value = ROTLEFT(value, 5, 32)
+        value = value + (value >> 2)
+
+    // 4 dalys (32 simboliu hex string)
+    part1 = value
+    part2 = NOT(value)
+    part3 = value XOR 0xFFFF
+    part4 = value * 3
+
+    // Grazinamas hex string
+    RETURN HEX32(part1) + HEX32(part2) + HEX32(part3) + HEX32(part4)
+
 ```
 
 ## Realizavimo Detalės
@@ -100,9 +131,9 @@ make test
 
 #### Nojaus Hash (Nojus)
 
-```bash
-cd Nojus/
-make
+```terminal
+cd Nojus
+make all
 ```
 
 ### Naudojimas
