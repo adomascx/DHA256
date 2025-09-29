@@ -5,8 +5,9 @@
 **/*.exe
 **/bin
 
-# Text files
+# Text files (except konstitucija.txt)
 **/*.txt
+!Adomas/tests/konstitucija.txt
 
 # Project Requirements reference 
 REQUIREMENTS.md
