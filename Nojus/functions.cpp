@@ -22,7 +22,7 @@ void Ivesti()
             rotatedValue = (c >> randomShift) | (c << (8 - randomShift));
         value ^= rotatedValue;
         value = (value << 5) | (value >> 27);
-        value += (value >> 2);
+        value += (value >> 2) | (value << 30);
     }
     uint32_t part1 = value;
     uint32_t part2 = ~value;
@@ -97,7 +97,7 @@ void Skaityti()
                 rotatedValue = (c >> randomShift) | (c << (8 - randomShift));
             value ^= rotatedValue;
             value = (value << 5) | (value >> 27);
-            value += (value >> 2);
+            value += (value >> 2) | (value << 30);
         }
         uint32_t part1 = value;
         uint32_t part2 = ~value;
