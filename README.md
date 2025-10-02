@@ -46,6 +46,16 @@ Tikslas - sukurti originalų hash generatorių, kuris atitiktų kriptografinių 
     - [Visų Trijų Algoritmų Palyginimas](#visų-trijų-algoritmų-palyginimas)
     - [Palyginimas su Kitos Komandos Algoritmu](#palyginimas-su-kitos-komandos-algoritmu)
     - [Palyginimas su Standartiniais Algoritmais](#palyginimas-su-standartiniais-algoritmais)
+  - [Išvados](#išvados)
+    - [PHA256](#pha256)
+      - [Privalumai](#privalumai)
+      - [Trūkumai](#trūkumai)
+    - [PHA256\_AI](#pha256_ai)
+      - [Privalumai](#privalumai-1)
+      - [Trūkumai](#trūkumai-1)
+    - [Nojaus Hash](#nojaus-hash-1)
+      - [Privalumai](#privalumai-2)
+      - [Trūkumai](#trūkumai-2)
 
 ## Algoritmo pseudokodai
 
@@ -355,3 +365,39 @@ Išvada: AI pagerinta versija išlaiko deterministiškumą ir lavinos kokybę, t
 | PHA256_AI   | 1.36                      | 0 kolizijų            | 50.0%                         |
 | Nojaus Hash | 1.98                      | 0 kolizijų            | 49.9%                         |
 | SHA-256     | 1.50                      | 0 kolizijų            | 50.0%                         |
+
+## Išvados
+
+### PHA256
+
+#### Privalumai
+
+- Greičiausias iš mūsų algoritmų, todėl tinka, kai svarbu spartus skaičiavimas.
+- Lavinos efektas artimas 50 %, tad mažas įvesties pokytis stipriai keičia išvestį.
+
+#### Trūkumai
+
+- Druskos nebuvimas sumažina paieškos erdvę, todėl bruteforce atakos ir įvesties atstatymas tampa lengvesni.
+
+### PHA256_AI
+
+#### Privalumai
+
+- Agresyvesnė rotacijų ir XOR kombinacija dar labiau pritraukia lavinos efektą prie idealaus 50 %.
+- Struktūruoti atsitiktiniai poslinkiai apsunkina analizę, kai norima rekonstruoti kelią atgal.
+
+#### Trūkumai
+
+- Apytikriai 45 % lėtesnis už bazinį PHA256, todėl prarandame našumo pranašumą.
+- Sudėtingesnė grandinė reiškia daugiau vietų klaidoms ir sunkesnį audito procesą.
+
+### Nojaus Hash
+
+#### Privalumai
+
+- Paprasta, PRNG (Pseudorandom Number Generator) pagrįsta seka leidžia lengvai derinti ir adaptuoti algoritmą naujiems eksperimentams.
+- Įdiegta druskos mechanika iškart permuša rand() seką, todėl lengva pritaikyti perrinktam saugumo lygiui.
+
+#### Trūkumai
+
+- Labai priklausomas nuo standartinio PRNG, tad žinant generatorių teorinis atsekamumas išlieka.
