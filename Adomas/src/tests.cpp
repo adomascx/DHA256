@@ -5,6 +5,7 @@
 #include <chrono>
 #include <cmath>
 #include <ctime>
+#include <bitset>
 #include <filesystem>
 #include <limits>
 #include <iomanip>
@@ -189,6 +190,48 @@ namespace
                    << setw(8) << part3
                    << setw(8) << part4;
         return hashStream.str();
+    }
+
+    string kitu_hash_hex(const string &input)
+    {
+        constexpr uint64_t seed = 371928463890165017ull;
+        vector<bitset<8>> separateBytes;
+        separateBytes.reserve(input.size());
+
+        for (unsigned char c : input)
+        {
+            separateBytes.emplace_back(bitset<8>(c));
+        }
+
+        if (!separateBytes.empty())
+        {
+            size_t k = (input.size() * 781928401873ull + separateBytes.front().count()) % separateBytes.size();
+            if (k == 0 && separateBytes.size() > 1)
+            {
+                k = 1;
+            }
+            rotate(separateBytes.begin(), separateBytes.begin() + static_cast<ptrdiff_t>(k), separateBytes.end());
+        }
+
+        bitset<64> hash(seed);
+        size_t index = 0;
+        for (const auto &byte : separateBytes)
+        {
+            for (size_t b = 0; b < 8; ++b, ++index)
+            {
+                size_t pos = index % 64;
+                hash[pos] = hash[pos] ^ byte[b];
+            }
+        }
+
+        uint64_t h = hash.to_ullong();
+        h *= 0xFEEDFACECAFEBEEFull;
+        h ^= (h >> 29);
+        h *= 0x9E3779B97F4A7C15ull;
+
+        ostringstream oss;
+        oss << hex << nouppercase << setfill('0') << setw(16) << h;
+        return oss.str();
     }
 
     inline uint32_t rotr(uint32_t value, uint32_t shift)
@@ -379,6 +422,8 @@ HashAlgorithm resolve_algorithm_choice(char choice)
         return HashAlgorithm::Nojus;
     case '4':
         return HashAlgorithm::SHA256;
+    case '5':
+        return HashAlgorithm::KituHash;
     default:
         return HashAlgorithm::PHA256_Basic;
     }
@@ -394,6 +439,8 @@ string hash_algorithm_name(HashAlgorithm algorithm)
         return "NojusHash";
     case HashAlgorithm::SHA256:
         return "SHA256";
+    case HashAlgorithm::KituHash:
+        return "KituHash";
     default:
         return "PHA256";
     }
@@ -409,6 +456,8 @@ string run_hash(HashAlgorithm algorithm, const string &input)
         return run_nojus_hash_impl(input);
     case HashAlgorithm::SHA256:
         return sha256_hex(input);
+    case HashAlgorithm::KituHash:
+        return kitu_hash_hex(input);
     default:
         return PHA256(input);
     }
@@ -419,9 +468,11 @@ size_t expected_hash_length(HashAlgorithm algorithm)
     switch (algorithm)
     {
     case HashAlgorithm::Nojus:
-        return 32;
+        return 64;
     case HashAlgorithm::SHA256:
         return 64;
+    case HashAlgorithm::KituHash:
+        return 16;
     default:
         return 64;
     }

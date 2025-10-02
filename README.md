@@ -145,7 +145,7 @@ make all
   build\test_auto.exe
   ```
 
-  Pasirinkus `t` (tests) galima patikrinti hash ilgius ir deterministiškumą, `b` paleidžia visų trijų metrikų benchmark'us. Galima rinktis konkretų algoritmą (PHA256, PHA256_AI, NojusHash, SHA256) arba `All`.
+  Pasirinkus `t` (tests) galima patikrinti hash ilgius ir deterministiškumą, `b` paleidžia visų trijų metrikų benchmark'us. Galima rinktis konkretų algoritmą (PHA256, PHA256_AI, NojusHash, SHA256, KituHash) arba `All`.
 
 - Rankiniams eksperimentams:
 
@@ -215,61 +215,61 @@ make all
 
 | Apdorotų eilučių | Vid. laikas (ms) |
 | ---------------- | ---------------- |
-| 1                | 0.0134           |
-| 2                | 0.0153           |
-| 4                | 0.0182           |
-| 8                | 0.0276           |
-| 16               | 0.0546           |
-| 32               | 0.0946           |
-| 64               | 0.1880           |
-| 128              | 0.4373           |
-| 256              | 0.9302           |
-| 512              | 2.1761           |
+| 1                | 0.0058           |
+| 2                | 0.0044           |
+| 4                | 0.0051           |
+| 8                | 0.0079           |
+| 16               | 0.0197           |
+| 32               | 0.0337           |
+| 64               | 0.0671           |
+| 128              | 0.1730           |
+| 256              | 0.3867           |
+| 512              | 0.9387           |
 
 #### PHA256_AI Greitis (pagerintas)
 
 | Apdorotų eilučių | Vid. laikas (ms) |
 | ---------------- | ---------------- |
-| 1                | 0.0185           |
-| 2                | 0.0216           |
-| 4                | 0.0294           |
-| 8                | 0.0523           |
-| 16               | 0.1447           |
-| 32               | 0.2619           |
-| 64               | 0.5237           |
-| 128              | 1.2953           |
-| 256              | 1.9367           |
-| 512              | 3.0046           |
+| 1                | 0.0046           |
+| 2                | 0.0058           |
+| 4                | 0.0144           |
+| 8                | 0.0174           |
+| 16               | 0.0546           |
+| 32               | 0.1028           |
+| 64               | 0.2030           |
+| 128              | 0.5114           |
+| 256              | 0.8234           |
+| 512              | 1.3610           |
 
 #### Nojaus Hash Greitis
 
 | Apdorotų eilučių | Vid. laikas (ms) |
 | ---------------- | ---------------- |
-| 1                | 0.0135           |
-| 2                | 0.0179           |
-| 4                | 0.0256           |
-| 8                | 0.0406           |
-| 16               | 0.1007           |
-| 32               | 0.1802           |
-| 64               | 0.3664           |
-| 128              | 0.8608           |
-| 256              | 1.9328           |
-| 512              | 4.3862           |
+| 1                | 0.0044           |
+| 2                | 0.0053           |
+| 4                | 0.0083           |
+| 8                | 0.0148           |
+| 16               | 0.0411           |
+| 32               | 0.0745           |
+| 64               | 0.1506           |
+| 128              | 0.3619           |
+| 256              | 0.8152           |
+| 512              | 1.9820           |
 
 #### SHA-256 Greitis (standartas)
 
 | Apdorotų eilučių | Vid. laikas (ms) |
 | ---------------- | ---------------- |
-| 1                | 0.0166           |
-| 2                | 0.0205           |
-| 4                | 0.0285           |
-| 8                | 0.0352           |
-| 16               | 0.0797           |
-| 32               | 0.1432           |
-| 64               | 0.2814           |
-| 128              | 0.6598           |
-| 256              | 1.4954           |
-| 512              | 3.5281           |
+| 1                | 0.0068           |
+| 2                | 0.0077           |
+| 4                | 0.0096           |
+| 8                | 0.0124           |
+| 16               | 0.0326           |
+| 32               | 0.0541           |
+| 64               | 0.1134           |
+| 128              | 0.2854           |
+| 256              | 0.5678           |
+| 512              | 1.4966           |
 
 **Veikimo Grafikas:**
 
@@ -294,12 +294,12 @@ Visoms funkcijoms (100 000 atsitiktinių porų kiekvienam ilgiui 10/100/500/1000
 
 | Algoritmas  | Hex min/avg/max (% nuo maksimalios reikšmės) | Bit min/avg/max (% nuo bitų ilgio) |
 | ----------- | -------------------------------------------- | ---------------------------------- |
-| PHA256      | 75.0% / 93.5% / 100%                         | 35.9% / 49.8% / 62.5%              |
-| PHA256_AI   | 78.1% / 93.7% / 100%                         | 37.1% / 50.0% / 62.5%              |
-| Nojaus Hash | 18.8% / 46.9% / 50%                          | 9.4% / 25.0% / 40.6%               |
-| SHA-256     | 78.1% / 93.8% / 100%                         | 36.7% / 50.0% / 64.1%              |
+| PHA256      | 75.0% / 93.5% / 100%                         | 36.7% / 49.8% / 63.3%              |
+| PHA256_AI   | 76.6% / 93.7% / 100%                         | 35.9% / 50.0% / 64.1%              |
+| Nojaus Hash | 37.5% / 93.7% / 100%                         | 14.1% / 49.9% / 84.4%              |
+| SHA-256     | 78.1% / 93.7% / 100%                         | 37.1% / 50.0% / 64.1%              |
 
-Visiems algoritmams idealus tikslas – ~50% bitų pokytis. PHA256, PHA256_AI ir SHA-256 vidutiniškai pasiekia beveik idealų 50% rezultatą, tuo tarpu Nojaus Hash lavinos efektas vis dar silpnesnis.
+Visiems algoritmams idealus tikslas – ~50% bitų pokytis. PHA256, PHA256_AI ir SHA-256 vidutiniškai pasiekia beveik idealų 50% rezultatą. Nojaus Hash vidurkis pakilo iki ~50%, tačiau dėl trumpesnės 64 bitų išvesties minimalūs pokyčiai išlieka gerokai mažesni ir rezultatai labiau svyruoja.
 
 ### 6. Negrįžtamumo Savybės Demonstracija
 
@@ -315,39 +315,39 @@ Visiems algoritmams idealus tikslas – ~50% bitų pokytis. PHA256, PHA256_AI ir
 
 ### PHA256 Vidinės Komandos Palyginimas (Rankinis vs AI-Pagerintas)
 
-| Metrika               | PHA256 (rankinis)           | PHA256_AI (pagerintas)                                    | Komentaras                                               |
-| --------------------- | --------------------------- | --------------------------------------------------------- | -------------------------------------------------------- |
-| Greitis (512 eilučių) | 2.30 ms                     | 2.06 ms                                                   | AI versija ~11% greitesnė dėl optimizuoto duomenų kelio. |
-| Kolizijų dažnis       | 0 / 100 000                 | 0 / 100 000                                               | Abiejose versijose kolizijų nepastebėta.                 |
-| Lavinos efektas       | 49.8% bitų                  | 50.0% bitų                                                | AI versija pasiekia šiek tiek labiau idealų 50% tikslą.  |
-| Lavinos min / max     | 35.9% / 62.5%               | 37.1% / 62.5%                                             | Minimalus bitų pokytis pagerėjo, maksimalus identiškas.  |
-| Druskos atsparumas    | Priklauso nuo druskos ilgio | Atsparumas nenukenčia, PRNG poslinkiai NAV druskos atveju | Druskos naudojimas rekomenduojamas abiem algoritmams.    |
+| Metrika               | PHA256 (rankinis)           | PHA256_AI (pagerintas)                                    | Komentaras                                              |
+| --------------------- | --------------------------- | --------------------------------------------------------- | ------------------------------------------------------- |
+| Greitis (512 eilučių) | 0.93 ms                     | 1.36 ms                                                   | AI versija ~45 % lėtesnė dėl papildomų transformacijų.  |
+| Kolizijų dažnis       | 0 / 100 000                 | 0 / 100 000                                               | Abiejose versijose kolizijų nepastebėta.                |
+| Lavinos efektas       | 49.8% bitų                  | 50.0% bitų                                                | AI versija pasiekia šiek tiek labiau idealų 50% tikslą. |
+| Lavinos min / max     | 35.9% / 62.5%               | 37.1% / 62.5%                                             | Minimalus bitų pokytis pagerėjo, maksimalus identiškas. |
+| Druskos atsparumas    | Priklauso nuo druskos ilgio | Atsparumas nenukenčia, PRNG poslinkiai NAV druskos atveju | Druskos naudojimas rekomenduojamas abiem algoritmams.   |
 
-Išvada: AI pagerinta versija išlaiko deterministiškumą ir kolizijų atsparumą, šiek tiek pagerina greitį ir lavinos efektą, todėl rekomenduojama pagrindiniams eksperimentams.
+Išvada: AI pagerinta versija išlaiko deterministiškumą ir lavinos kokybę, tačiau dabartiniame kode veikia lėčiau už bazinę PHA256, todėl ją verta rinktis tik jei reikalingas maksimalus lavinos efektas.
 
 ### Visų Trijų Algoritmų Palyginimas
 
 | Algoritmas        | Greitis (512 eilučių, ms) | Kolizijų dažnis | Lavinos efektas   |
 | ----------------- | ------------------------- | --------------- | ----------------- |
-| PHA256 (Rankinis) | 2.30                      | 0               | ~50% vidutiniškai |
-| PHA256_AI         | 2.06                      | 0               | ~50% vidutiniškai |
-| Nojaus Hash       | 5.28                      | 0               | ~25% vidutiniškai |
-| SHA-256           | 2.30                      | 0               | ~50% vidutiniškai |
+| PHA256 (Rankinis) | 0.94                      | 0               | ~50% vidutiniškai |
+| PHA256_AI         | 1.36                      | 0               | ~50% vidutiniškai |
+| Nojaus Hash       | 1.98                      | 0               | ~50% vidutiniškai |
+| SHA-256           | 1.50                      | 0               | ~50% vidutiniškai |
 
 ### Palyginimas su Kitos Komandos Algoritmu
 
-| Algoritmas              | Greitis (512 eilučių, ms) | Kolizijų dažnis | Lavinos efektas |
-| ----------------------- | ------------------------- | --------------- | --------------- |
-| PHA256 (Rankinis)       | 2.30                      | 0 / 100 000     | 49.8%           |
-| PHA256_AI               | 2.06                      | 0 / 100 000     | 50.0%           |
-| Nojaus Hash             | 5.28                      | 0 / 100 000     | 25.0%           |
-| Valentinas/Andrius Algo | _TBD_                     | _TBD_           | _TBD_           |
+| Algoritmas                | Greitis (512 eilučių, ms) | Kolizijų dažnis | Lavinos efektas |
+| ------------------------- | ------------------------- | --------------- | --------------- |
+| PHA256 (Rankinis)         | 0.94                      | 0 / 100 000     | 49.8%           |
+| PHA256_AI                 | 1.36                      | 0 / 100 000     | 50.0%           |
+| Nojaus Hash               | 1.98                      | 0 / 100 000     | 49.9%           |
+| KituHash (kitos komandos) | 13.92                     | 0 / 100 000     | 44.1%           |
 
 ### Palyginimas su Standartiniais Algoritmais
 
 | Algoritmas  | Greitis (512 eilučių, ms) | Atsparumas kolizijoms | Lavinos efektas (vid. % bitų) |
 | ----------- | ------------------------- | --------------------- | ----------------------------- |
-| PHA256      | 2.305                     | 0 kolizijų            | 49.8%                         |
-| PHA256_AI   | 2.064                     | 0 kolizijų            | 50.0%                         |
-| Nojaus Hash | 5.283                     | 0 kolizijų            | 25.0%                         |
-| SHA-256     | 2.296                     | 0 kolizijų            | 50.0%                         |
+| PHA256      | 0.94                      | 0 kolizijų            | 49.8%                         |
+| PHA256_AI   | 1.36                      | 0 kolizijų            | 50.0%                         |
+| Nojaus Hash | 1.98                      | 0 kolizijų            | 49.9%                         |
+| SHA-256     | 1.50                      | 0 kolizijų            | 50.0%                         |

@@ -37,7 +37,7 @@ namespace
 
     HashAlgorithm prompt_algorithm()
     {
-        cout << "Select algorithm (1 - PHA256, 2 - PHA256_AI, 3 - NojusHash, 4 - SHA256): ";
+        cout << "Select algorithm (1 - PHA256, 2 - PHA256_AI, 3 - NojusHash, 4 - SHA256, 5 - KituHash): ";
         char algorithmChoice;
         cin >> algorithmChoice;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
