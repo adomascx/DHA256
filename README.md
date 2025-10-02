@@ -191,9 +191,9 @@ make all
 
 | Įvedimo tipas   | PHA256 | PHA256_AI | Nojaus Hash |
 | --------------- | ------ | --------- | ----------- |
-| Vienas simbolis | 64 hex | 64 hex    | 32 hex      |
-| Didelis failas  | 64 hex | 64 hex    | 32 hex      |
-| Tuščias failas  | 64 hex | 64 hex    | 32 hex      |
+| Vienas simbolis | 64 hex | 64 hex    | 64 hex      |
+| Didelis failas  | 64 hex | 64 hex    | 64 hex      |
+| Tuščias failas  | 64 hex | 64 hex    | 64 hex      |
 
 ### 2. Deterministiškumo Testavimas
 

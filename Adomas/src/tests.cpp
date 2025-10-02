@@ -182,13 +182,21 @@ namespace
         uint32_t part2 = ~value;
         uint32_t part3 = value ^ 0xFFFFu;
         uint32_t part4 = value * 3u;
+        uint32_t part5 = (value << 1) ^ (value >> 1);
+        uint32_t part6 = value + 0xA5A5A5A5u;
+        uint32_t part7 = value ^ 0x7E7E7E7Eu;
+        uint32_t part8 = (value ^ 0xFFFFFFFFu) * (value ^ 0x12345678u);
 
         ostringstream hashStream;
         hashStream << hex << nouppercase << setfill('0')
                    << setw(8) << part1
                    << setw(8) << part2
                    << setw(8) << part3
-                   << setw(8) << part4;
+                   << setw(8) << part4
+                   << setw(8) << part5
+                   << setw(8) << part6
+                   << setw(8) << part7
+                   << setw(8) << part8;
         return hashStream.str();
     }
 
