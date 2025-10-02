@@ -11,7 +11,8 @@ enum class HashAlgorithm
 	PHA256_Basic = 1,
 	PHA256_AI = 2,
 	Nojus = 3,
-	SHA256 = 4
+	SHA256 = 4,
+	KituHash = 5
 };
 
 struct TimingResult

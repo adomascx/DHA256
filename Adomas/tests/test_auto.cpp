@@ -19,7 +19,8 @@ namespace
 		     << "2 - PHA256_AI\n"
 		     << "3 - NojusHash\n"
 		     << "4 - SHA256\n"
-		     << "5 - All" << endl;
+		     << "5 - KituHash\n"
+		     << "6 - All" << endl;
 		cout << "Selection: ";
 		char choice;
 		cin >> choice;
@@ -36,7 +37,9 @@ namespace
 		case '4':
 			return {HashAlgorithm::SHA256};
 		case '5':
-			return {HashAlgorithm::PHA256_Basic, HashAlgorithm::PHA256_AI, HashAlgorithm::Nojus, HashAlgorithm::SHA256};
+			return {HashAlgorithm::KituHash};
+		case '6':
+			return {HashAlgorithm::PHA256_Basic, HashAlgorithm::PHA256_AI, HashAlgorithm::Nojus, HashAlgorithm::SHA256, HashAlgorithm::KituHash};
 		default:
 			cout << "Unrecognized option. Defaulting to PHA256." << endl;
 			return {HashAlgorithm::PHA256_Basic};
