@@ -28,13 +28,21 @@ void Ivesti()
     uint32_t part2 = ~value;
     uint32_t part3 = value ^ 0xFFFF;
     uint32_t part4 = value * 3;
+    uint32_t part5 = (value << 1) ^ (value >> 1);
+    uint32_t part6 = value + 0xA5A5A5A5;
+    uint32_t part7 = value ^ 0x7E7E7E7E;
+    uint32_t part8 = (value ^ 0xFFFFFFFF) * (value ^ 0x12345678);
 
     std::stringstream hash;
     hash << std::hex
          << std::setw(8) << std::setfill('0') << part1
          << std::setw(8) << std::setfill('0') << part2
          << std::setw(8) << std::setfill('0') << part3
-         << std::setw(8) << std::setfill('0') << part4;
+         << std::setw(8) << std::setfill('0') << part4
+         << std::setw(8) << std::setfill('0') << part5
+         << std::setw(8) << std::setfill('0') << part6
+         << std::setw(8) << std::setfill('0') << part7
+         << std::setw(8) << std::setfill('0') << part8;
 
     std::cout << "Hash: " << hash.str() << std::endl;
 }
@@ -62,8 +70,9 @@ void Skaityti()
         }
     }
     file.close();
-    std::cout << std::endl << "Total words found: " << stringArray.size() << std::endl;
-    
+    std::cout << std::endl
+              << "Total words found: " << stringArray.size() << std::endl;
+
     std::vector<std::string> hashVector;
     int seed = 2671109;
     for (const std::string &str : stringArray)
@@ -94,13 +103,21 @@ void Skaityti()
         uint32_t part2 = ~value;
         uint32_t part3 = value ^ 0xFFFF;
         uint32_t part4 = value * 3;
+        uint32_t part5 = (value << 1) ^ (value >> 1);
+        uint32_t part6 = value + 0xA5A5A5A5;
+        uint32_t part7 = value ^ 0x7E7E7E7E;
+        uint32_t part8 = (value ^ 0xFFFFFFFF) * (value ^ 0x12345678);
 
         std::stringstream hash;
         hash << std::hex
              << std::setw(8) << std::setfill('0') << part1
              << std::setw(8) << std::setfill('0') << part2
              << std::setw(8) << std::setfill('0') << part3
-             << std::setw(8) << std::setfill('0') << part4;
+             << std::setw(8) << std::setfill('0') << part4
+             << std::setw(8) << std::setfill('0') << part5
+             << std::setw(8) << std::setfill('0') << part6
+             << std::setw(8) << std::setfill('0') << part7
+             << std::setw(8) << std::setfill('0') << part8;
 
         std::string hashStr = hash.str();
         hashVector.push_back(hashStr);
@@ -108,7 +125,7 @@ void Skaityti()
         fr << "Word: '" << str << "' -> Hash: " << hashStr << std::endl;
         fr.close();
     }
-    
+
     std::cout << "Checking for hash collisions..." << std::endl;
     bool foundCollision = false;
     for (size_t i = 0; i < hashVector.size(); i++)
