@@ -105,14 +105,18 @@ FUNCTION HASH(string):
         value = ROTLEFT(value, 5, 32)
         value = value + (value >> 2)
 
-    // 4 dalys (32 simboliu hex string)
+    // 8 dalys (64 simboliu hex string)
     part1 = value
-    part2 = NOT(value)
-    part3 = value XOR 0xFFFF
+    part2 = ~value
+    part3 = value ^ 0xFFFF
     part4 = value * 3
+    part5 = (value << 1) ^ (value >> 1)
+    part6 = value + 0xA5A5A5A5
+    part7 = value ^ 0x7E7E7E7E
+    part8 = (value ^ 0xFFFFFFFF) * (value ^ 0x12345678)
 
     // Grazinamas hex string
-    RETURN HEX32(part1) + HEX32(part2) + HEX32(part3) + HEX32(part4)
+    RETURN HEX(part1) + HEX(part2) + HEX(part3) + HEX(part4) + HEX(part5) + HEX(part6) + HEX(part7) + HEX(part8)
 
 ```
 
